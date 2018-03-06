@@ -5,13 +5,22 @@ public class Portal : MonoBehaviour
     // Reference types
     public Transform spawnPoint;
 
+    /// <summary>
+    /// By trigger, then teleport the game object.
+    /// </summary>
+    /// <param name="other">The triggered game object.</param>
     private void OnTriggerEnter(Collider other)
     {
         // When the spawn point available, then spawn the player in the other portal.
         if (spawnPoint != null)
         {
-            // Spawn the player in the other portal:
-            other.gameObject.transform.position = spawnPoint.position;
+            // Spawn the player in the other portal.
+            other.gameObject.transform.position = new Vector3
+            (
+                spawnPoint.position.x,
+                spawnPoint.position.y,
+                spawnPoint.position.z - 2f
+            );
 
             // Rotate the player in the correct direction.
             other.transform.Rotate
