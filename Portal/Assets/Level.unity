@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 714894983}
   - component: {fileID: 714894981}
   - component: {fileID: 714894982}
+  - component: {fileID: 714894987}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Player
@@ -590,6 +591,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &714894987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714894980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edac71a0eeb7e243acbdd7405c94c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bluePortalPrefab: {fileID: 1135144378203416, guid: efc2cf4f66366a94691b8e2005e51239,
+    type: 2}
+  redPortalPrefab: {fileID: 1435324427080436, guid: e7d4b37ef422f3742a8501f12e686526,
+    type: 2}
 --- !u!1 &784977752
 GameObject:
   m_ObjectHideFlags: 0
