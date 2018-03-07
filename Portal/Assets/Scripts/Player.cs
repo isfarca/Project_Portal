@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
                 {
                     if (hit.collider.name == "Wall")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             bluePortalPrefab,
                             hit.collider.transform.position.x + 0.8f,
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Wall (1)")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             bluePortalPrefab,
                             hit.collider.transform.position.x - 0.8f,
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Wall (2)")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             bluePortalPrefab,
                             mousePosition.x,
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Wall (3)")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             bluePortalPrefab,
                             mousePosition.x,
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Roof")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             bluePortalPrefab,
                             mousePosition.x,
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
                 {
                     if (hit.collider.name == "Wall")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             redPortalPrefab,
                             hit.collider.transform.position.x + 0.8f,
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Wall (1)")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             redPortalPrefab,
                             hit.collider.transform.position.x - 0.8f,
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Wall (2)")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             redPortalPrefab,
                             mousePosition.x,
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Wall (3)")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             redPortalPrefab,
                             mousePosition.x,
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
                     }
                     else if (hit.collider.name == "Roof")
                     {
-                        InstantiatePortal
+                        TransformPortal
                         (
                             redPortalPrefab,
                             mousePosition.x,
@@ -150,15 +150,19 @@ public class Player : MonoBehaviour
 	}
 
     /// <summary>
-    /// Instantiate portal on the collider by hit with cursor.
+    /// Transform portal on the collider by hit with cursor.
     /// </summary>
-    /// <param name="prefab">Instantiated game object.</param>
-    /// <param name="posX">Position x for game object to instantiate.</param>
-    /// <param name="posY">Position y for game object to instantiate.</param>
-    /// <param name="posZ">Position z for game object to instantiate.</param>
-    /// <param name="rotation">Completely rotation kit (x, y, z) for game object to instantiate.</param>
-    void InstantiatePortal(GameObject prefab, float posX, float posY, float posZ, Quaternion rotation)
+    /// <param name="prefab">Transformed game object.</param>
+    /// <param name="posX">Position x for game object to transform.</param>
+    /// <param name="posY">Position y for game object to transform.</param>
+    /// <param name="posZ">Position z for game object to transform.</param>
+    /// <param name="rotation">Completely rotation kit (x, y, z) for game object to transform.</param>
+    void TransformPortal(GameObject prefab, float positionX, float positionY, float positionZ, Quaternion rotation)
     {
-        Instantiate(prefab, new Vector3(posX, posY, posZ), rotation);
+        // Set the position from current portal.
+        prefab.transform.position = new Vector3(positionX, positionY, positionZ);
+
+        // Set the rotation from current portal.
+        prefab.transform.rotation = rotation;
     }
 }

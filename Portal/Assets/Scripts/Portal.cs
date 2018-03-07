@@ -3,7 +3,7 @@
 public class Portal : MonoBehaviour
 {
     // Reference types
-    public Transform spawnPoint;
+    private GameObject spawnPoint;
 
     /// <summary>
     /// By trigger, then teleport the game object.
@@ -17,9 +17,9 @@ public class Portal : MonoBehaviour
             // Spawn the game object in the other portal.
             other.gameObject.transform.position = new Vector3
             (
-                spawnPoint.position.x,
-                spawnPoint.position.y,
-                spawnPoint.position.z - 2f
+                spawnPoint.transform.position.x,
+                spawnPoint.transform.position.y,
+                spawnPoint.transform.position.z
             );
 
             // Rotate the game object in the correct direction.
@@ -28,10 +28,16 @@ public class Portal : MonoBehaviour
                 new Vector3
                 (
                     other.transform.rotation.x,
-                    other.transform.rotation.y + 180,
+                    other.transform.rotation.y,
                     other.transform.rotation.z
                 )
             );
         }
+    }
+
+    public GameObject SpawnPoint
+    {
+        get { return spawnPoint; }
+        set { spawnPoint = value; }
     }
 }

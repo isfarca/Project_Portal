@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 23291714567070418}
   - component: {fileID: 65575240153845432}
   - component: {fileID: 54868164938694232}
-  - component: {fileID: 114475084211923334}
+  - component: {fileID: 114560382314283612}
   m_Layer: 0
   m_Name: Blue Portal
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,8 +56,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1135144378203416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.53, y: 8.23, z: 28.87}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.248129, y: 8.42, z: 28.77}
   m_LocalScale: {x: 10, y: 15, z: 1}
   m_Children:
   - {fileID: 4189126076315758}
@@ -193,7 +193,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1895949161924610}
   m_Enabled: 1
---- !u!114 &114475084211923334
+--- !u!114 &114560382314283612
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d29af0cbff78524f90dac93db0ae633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 4192787885120036, guid: e7d4b37ef422f3742a8501f12e686526, type: 2}
 --- !u!124 &124473236312106624
 Behaviour:
   m_ObjectHideFlags: 1
