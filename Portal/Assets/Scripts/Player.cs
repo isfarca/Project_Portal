@@ -11,9 +11,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Declare variables
-        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Set the position of cursor in the scene.
-
         // Set ray to the cursor position.
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -24,130 +21,93 @@ public class Player : MonoBehaviour
 
             // Press mouse button left, then spawn the blue portal on the collider by hit with cursor.
             if (Input.GetButtonDown("Fire1"))
-            {
-                if (bluePortalPrefab != null)
-                {
-                    if (hit.collider.name == "Wall")
-                    {
-                        TransformPortal
-                        (
-                            bluePortalPrefab,
-                            hit.collider.transform.position.x + 0.8f,
-                            hit.collider.transform.position.y - 5f,
-                            mousePosition.z,
-                            Quaternion.Euler(0f, -90f, 0f)
-                        );
-                    }
-                    else if (hit.collider.name == "Wall (1)")
-                    {
-                        TransformPortal
-                        (
-                            bluePortalPrefab,
-                            hit.collider.transform.position.x - 0.8f,
-                            hit.collider.transform.position.y - 5f,
-                            mousePosition.z,
-                            Quaternion.Euler(0f, 90f, 0f)
-                        );
-                    }
-                    else if (hit.collider.name == "Wall (2)")
-                    {
-                        TransformPortal
-                        (
-                            bluePortalPrefab,
-                            mousePosition.x,
-                            hit.collider.transform.position.y - 5f,
-                            hit.collider.transform.position.z + 0.8f,
-                            Quaternion.Euler(0f, 180f, 0f)
-                        );
-                    }
-                    else if (hit.collider.name == "Wall (3)")
-                    {
-                        TransformPortal
-                        (
-                            bluePortalPrefab,
-                            mousePosition.x,
-                            hit.collider.transform.position.y - 5f,
-                            hit.collider.transform.position.z - 0.8f,
-                            Quaternion.identity
-                        );
-                    }
-                    else if (hit.collider.name == "Roof")
-                    {
-                        TransformPortal
-                        (
-                            bluePortalPrefab,
-                            mousePosition.x,
-                            hit.collider.transform.position.y - 0.8f,
-                            hit.collider.transform.position.z,
-                            Quaternion.Euler(-90f, 0f, 0f)
-                        );
-                    }
-                }
-            }
+                SetPortal(bluePortalPrefab);
             // Press mouse button right, then spawn the red portal on the collider by hit with cursor.
             else if (Input.GetButtonDown("Fire2"))
-            {
-                if (redPortalPrefab != null)
-                {
-                    if (hit.collider.name == "Wall")
-                    {
-                        TransformPortal
-                        (
-                            redPortalPrefab,
-                            hit.collider.transform.position.x + 0.8f,
-                            hit.collider.transform.position.y - 5f,
-                            mousePosition.z,
-                            Quaternion.Euler(0f, -90f, 0f)
-                        );
-                    }
-                    else if (hit.collider.name == "Wall (1)")
-                    {
-                        TransformPortal
-                        (
-                            redPortalPrefab,
-                            hit.collider.transform.position.x - 0.8f,
-                            hit.collider.transform.position.y - 5f,
-                            mousePosition.z,
-                            Quaternion.Euler(0f, 90f, 0f)
-                        );
-                    }
-                    else if (hit.collider.name == "Wall (2)")
-                    {
-                        TransformPortal
-                        (
-                            redPortalPrefab,
-                            mousePosition.x,
-                            hit.collider.transform.position.y - 5f,
-                            hit.collider.transform.position.z + 0.8f,
-                            Quaternion.Euler(0f, 180f, 0f)
-                        );
-                    }
-                    else if (hit.collider.name == "Wall (3)")
-                    {
-                        TransformPortal
-                        (
-                            redPortalPrefab,
-                            mousePosition.x,
-                            hit.collider.transform.position.y - 5f,
-                            hit.collider.transform.position.z - 0.8f,
-                            Quaternion.identity
-                        );
-                    }
-                    else if (hit.collider.name == "Roof")
-                    {
-                        TransformPortal
-                        (
-                            redPortalPrefab,
-                            mousePosition.x,
-                            hit.collider.transform.position.y - 0.8f,
-                            hit.collider.transform.position.z,
-                            Quaternion.Euler(-90f, 0f, 0f)
-                        );
-                    }
-                }
-            }
+                SetPortal(redPortalPrefab);
         }
 	}
+
+    /// <summary>
+    /// Set the portal in the respective position.
+    /// </summary>
+    /// <param name="prefab">Portal game object.</param>
+    void SetPortal(GameObject prefab)
+    {
+        // Declare variables
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Set the position of cursor in the scene.
+
+        // Set the portal.
+        if (prefab != null)
+        {
+            if (hit.collider.name == "Ground")
+            {
+                TransformPortal
+                (
+                    prefab,
+                    mousePosition.x,
+                    hit.collider.transform.position.y + 0.8f,
+                    hit.collider.transform.position.z,
+                    Quaternion.Euler(90f, 0f, 0f)
+                );
+            }
+            else if (hit.collider.name == "Wall")
+            {
+                TransformPortal
+                (
+                    prefab,
+                    hit.collider.transform.position.x + 0.8f,
+                    hit.collider.transform.position.y - 5f,
+                    mousePosition.z,
+                    Quaternion.Euler(0f, -90f, 0f)
+                );
+            }
+            else if (hit.collider.name == "Wall (1)")
+            {
+                TransformPortal
+                (
+                    prefab,
+                    hit.collider.transform.position.x - 0.8f,
+                    hit.collider.transform.position.y - 5f,
+                    mousePosition.z,
+                    Quaternion.Euler(0f, 90f, 0f)
+                );
+            }
+            else if (hit.collider.name == "Wall (2)")
+            {
+                TransformPortal
+                (
+                    prefab,
+                    mousePosition.x,
+                    hit.collider.transform.position.y - 5f,
+                    hit.collider.transform.position.z + 0.8f,
+                    Quaternion.Euler(0f, 180f, 0f)
+                );
+            }
+            else if (hit.collider.name == "Wall (3)")
+            {
+                TransformPortal
+                (
+                    prefab,
+                    mousePosition.x,
+                    hit.collider.transform.position.y - 5f,
+                    hit.collider.transform.position.z - 0.8f,
+                    Quaternion.identity
+                );
+            }
+            else if (hit.collider.name == "Roof")
+            {
+                TransformPortal
+                (
+                    prefab,
+                    mousePosition.x,
+                    hit.collider.transform.position.y - 0.8f,
+                    hit.collider.transform.position.z,
+                    Quaternion.Euler(-90f, 0f, 0f)
+                );
+            }
+        }
+    }
 
     /// <summary>
     /// Transform portal on the collider by hit with cursor.

@@ -4,27 +4,17 @@ public class Blue : Portal
 {
     // Refernce types
     private Portal portalScript;
-    private Red redScript;
+    public Transform spawnPointFromRedPortal;
 
     /// <summary>
-    /// Set spawn point for portals.
+    /// Set spawn point.
     /// </summary>
     private void Awake()
     { 
-        // Get various components.
+        // Get the 'Portal'-Script.
         portalScript = GetComponent<Portal>();
-        redScript = GetComponent<Red>();
 
-        // Set spawn points.
-        SetSpawnPointRed(); // Spawn point for blue portal.
-        redScript.SetSpawnPointBlue(); // Spawn point for red portal.
-    }
-
-    /// <summary>
-    /// Set spawn point for blue portal.
-    /// </summary>
-    public void SetSpawnPointRed()
-    {
-        portalScript.SpawnPoint = GameObject.FindGameObjectWithTag("Red");
+        // Set the spawn point for blue portal.
+        portalScript.SpawnPoint = spawnPointFromRedPortal;
     }
 }
