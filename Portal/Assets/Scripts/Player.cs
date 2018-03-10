@@ -113,10 +113,10 @@ public class Player : MonoBehaviour
     /// Transform portal on the collider by hit with cursor.
     /// </summary>
     /// <param name="prefab">Transformed game object.</param>
-    /// <param name="posX">Position x for game object to transform.</param>
+    /// <param name="positionX">Position x for game object to transform.</param>
     /// <param name="posY">Position y for game object to transform.</param>
-    /// <param name="posZ">Position z for game object to transform.</param>
-    /// <param name="rotation">Completely rotation kit (x, y, z) for game object to transform.</param>
+    /// <param name="positionY">Position z for game object to transform.</param>
+    /// <param name="positionZ">Completely rotation kit (x, y, z) for game object to transform.</param>
     void TransformPortal(GameObject prefab, float positionX, float positionY, float positionZ, Quaternion rotation)
     {
         // Set the position from current portal.

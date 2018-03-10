@@ -30,7 +30,7 @@ public class MouseLook : MonoBehaviour {
 
 	float rotationY = 0F;
 
-	void Update ()
+    void Update ()
 	{
         Cursor.lockState = CursorLockMode.Locked;
 
